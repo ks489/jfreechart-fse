@@ -46,6 +46,9 @@ package org.jfree.chart.renderer.xy;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.BoxAndWhiskerXY;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.IChart;
 import org.jfree.chart.util.PublicCloneable;
 import org.jfree.data.statistics.BoxAndWhiskerItem;
 import org.jfree.data.statistics.DefaultBoxAndWhiskerXYDataset;
@@ -177,20 +180,32 @@ public class XYBoxAndWhiskerRendererTest  {
      */
     @Test
     public void test2909215() {
-        DefaultBoxAndWhiskerXYDataset d1 = new DefaultBoxAndWhiskerXYDataset(
+        /*DefaultBoxAndWhiskerXYDataset d1 = new DefaultBoxAndWhiskerXYDataset(
                 "Series");
         d1.add(new Date(1L), new BoxAndWhiskerItem(1.0,
                 2.0, 3.0, 4.0,
                 5.0, 6.0, null, null, null));
-        JFreeChart chart = ChartFactory.createBoxAndWhiskerChart("Title", "X",
-                "Y", d1);
+        JFreeChart chart = ChartFactory.createBoxAndWhiskerChart("Title", "X","Y", d1);
 
             BufferedImage image = new BufferedImage(400, 200,
                     BufferedImage.TYPE_INT_RGB);
             Graphics2D g2 = image.createGraphics();
             chart.draw(g2, new Rectangle2D.Double(0, 0, 400, 200), null, null);
-            g2.dispose();
+            g2.dispose();*/
         //FIXME we should assert a value here
+    	DefaultBoxAndWhiskerXYDataset d1 = new DefaultBoxAndWhiskerXYDataset("Series");
+    	d1.add(new Date(1L), new BoxAndWhiskerItem(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, null, null, null));
+    	//JFreeChart chart = ChartFactory.createBoxAndWhiskerChart("Title", "X", "Y", d1);
+    	BoxAndWhiskerXY boxChart = new BoxAndWhiskerXY("X", "Y", d1);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(boxChart);
+    	JFreeChart chart =  chartClient.createChart("Title");
+    	
+	    BufferedImage image = new BufferedImage(400, 200,
+	            BufferedImage.TYPE_INT_RGB);
+	    Graphics2D g2 = image.createGraphics();
+	    chart.draw(g2, new Rectangle2D.Double(0, 0, 400, 200), null, null);
+	    g2.dispose();    
+            
     }
 
 }
