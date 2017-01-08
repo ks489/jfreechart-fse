@@ -48,6 +48,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.LegendItem;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.XYLine;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.urls.TimeSeriesURLGenerator;
 import org.jfree.chart.util.PublicCloneable;
@@ -251,8 +253,10 @@ public class XYLineAndShapeRendererTest  {
     public void testFindDomainBounds() {
         XYSeriesCollection dataset
                 = RendererXYPackageTests.createTestXYSeriesCollection();
-        JFreeChart chart = ChartFactory.createXYLineChart(
-                "Test Chart", "X", "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("Test Chart", "X", "Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         NumberAxis domainAxis = (NumberAxis) plot.getDomainAxis();
         domainAxis.setAutoRangeIncludesZero(false);
@@ -270,8 +274,10 @@ public class XYLineAndShapeRendererTest  {
     public void testFindRangeBounds() {
         TableXYDataset dataset
                 = RendererXYPackageTests.createTestTableXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart(
-                "Test Chart", "X", "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("Test Chart", "X", "Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
         rangeAxis.setAutoRangeIncludesZero(false);

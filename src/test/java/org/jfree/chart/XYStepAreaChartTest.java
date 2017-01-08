@@ -41,6 +41,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.XYStep;
+import org.jfree.chart.charttypes.XYStepArea;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.StandardXYToolTipGenerator;
@@ -154,8 +157,11 @@ public class XYStepAreaChartTest  {
         series1.add(3.0, 3.0);
         XYDataset dataset = new XYSeriesCollection(series1);
 
-        return ChartFactory.createXYStepAreaChart("Step Chart", "Domain",
-            "Range", dataset);
+        //return ChartFactory.createXYStepAreaChart("Step Chart", "Domain","Range", dataset);
+        XYStepArea xystep = new XYStepArea("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xystep);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
+    	return chart;
 
     }
 

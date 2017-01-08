@@ -41,6 +41,8 @@
 
 package org.jfree.chart;
 
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.PieSimple;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.plot.PiePlot;
@@ -99,7 +101,11 @@ public class PieChartTest  {
         data.setValue("Java", new Double(43.2));
         data.setValue("Visual Basic", new Double(0.0));
         data.setValue("C/C++", new Double(17.5));
-        return ChartFactory.createPieChart("Pie Chart", data);
+        
+        PieSimple pieSimple = new PieSimple(data);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	return chartClient.createChart("Title");
+        //return ChartFactory.createPieChart("Pie Chart", data);
     }
 
     /**

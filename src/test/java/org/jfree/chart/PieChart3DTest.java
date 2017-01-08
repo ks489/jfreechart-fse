@@ -40,6 +40,9 @@
 
 package org.jfree.chart;
 
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Pie3D;
+import org.jfree.chart.charttypes.PieSimple;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.plot.PiePlot;
@@ -122,7 +125,11 @@ public class PieChart3DTest  {
      * @return The pie chart.
      */
     private static JFreeChart createPieChart3D(PieDataset dataset) {
-        return ChartFactory.createPieChart3D("Pie Chart", dataset);
+    	Pie3D pieSimple = new Pie3D(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	return chart;
+        //return ChartFactory.createPieChart3D("Pie Chart", dataset);
     }
 
     /**

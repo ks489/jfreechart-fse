@@ -64,6 +64,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.chart.TestUtils;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Line;
+import org.jfree.chart.charttypes.ScatterPlot;
 
 /**
  * Tests for the {@link LogAxis} class.
@@ -165,8 +169,10 @@ public class LogAxisTest  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(100.0, "Row 1", "Column 1");
         dataset.setValue(200.0, "Row 1", "Column 2");
-        JFreeChart chart = ChartFactory.createBarChart("Test", "Categories",
-                "Value", dataset);
+        Bar pieSimple = new Bar("Categories","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Test");
+        //JFreeChart chart = ChartFactory.createBarChart("Test", "Categories","Value", dataset);
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         LogAxis axis = new LogAxis("Log(Y)");
         plot.setRangeAxis(axis);
@@ -184,8 +190,11 @@ public class LogAxisTest  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(100.0, "Row 1", "Column 1");
         dataset.setValue(200.0, "Row 1", "Column 2");
-        JFreeChart chart = ChartFactory.createLineChart("Test", "Categories",
-                "Value", dataset);
+        //JFreeChart chart = ChartFactory.createLineChart("Test", "Categories","Value", dataset);
+        Line line = new Line("Categories","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(line);
+    	JFreeChart chart = chartClient.createChart("Test");
+    	
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         LogAxis axis = new LogAxis("Log(Y)");
         plot.setRangeAxis(axis);
@@ -213,8 +222,11 @@ public class LogAxisTest  {
         series.add(3.0, 3.0);
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
-        JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y",
-                dataset);
+        //JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y", dataset);
+        ScatterPlot scatterPlot = new ScatterPlot("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(scatterPlot);
+    	JFreeChart chart = chartClient.createChart("Test");
+    	
         XYPlot plot = (XYPlot) chart.getPlot();
         LogAxis axis = new LogAxis("Log(Y)");
         plot.setRangeAxis(axis);
@@ -234,8 +246,11 @@ public class LogAxisTest  {
         series.add(3.0, 3.0);
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
-        JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y",
-                dataset);
+        //JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y", dataset);
+        ScatterPlot scatterPlot = new ScatterPlot("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(scatterPlot);
+    	JFreeChart chart = chartClient.createChart("Test");
+    	
         XYPlot plot = (XYPlot) chart.getPlot();
         LogAxis axis = new LogAxis("Log(Y)");
         plot.setRangeAxis(axis);

@@ -43,6 +43,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
 import org.jfree.chart.fx.ChartViewer;
 import org.jfree.chart.fx.interaction.ChartMouseEventFX;
 import org.jfree.chart.fx.interaction.ChartMouseListenerFX;
@@ -81,9 +83,10 @@ public class BarChartFXDemo1 extends Application implements ChartMouseListenerFX
      * @return The chart.
      */
     private static JFreeChart createChart(CategoryDataset dataset) {
-        JFreeChart chart = ChartFactory.createBarChart(
-            "Performance: JFreeSVG vs Batik", null /* x-axis label*/, 
-                "Milliseconds" /* y-axis label */, dataset);
+        //JFreeChart chart = ChartFactory.createBarChart("Performance: JFreeSVG vs Batik", null /* x-axis label*/, "Milliseconds" /* y-axis label */, dataset);
+    	Bar pieSimple = new Bar(null,"Milliseconds", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Performance: JFreeSVG vs Batik");
         chart.addSubtitle(new TextTitle("Time to generate 1000 charts in SVG " 
                 + "format (lower bars = better performance)"));
         CategoryPlot plot = (CategoryPlot) chart.getPlot();

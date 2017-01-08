@@ -53,6 +53,8 @@ import java.util.List;
 import javax.swing.event.CaretListener;
 
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.XYLine;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.plot.XYPlot;
@@ -156,8 +158,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_zoom() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         ChartPanel panel = new ChartPanel(chart);
         chart.addChangeListener(this);
         this.chartChangeEvents.clear();
@@ -172,8 +176,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_zoomInBoth() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         ChartPanel panel = new ChartPanel(chart);
         chart.addChangeListener(this);
         this.chartChangeEvents.clear();
@@ -188,8 +194,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_zoomOutBoth() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         ChartPanel panel = new ChartPanel(chart);
         chart.addChangeListener(this);
         this.chartChangeEvents.clear();
@@ -204,8 +212,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_restoreAutoBounds() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         ChartPanel panel = new ChartPanel(chart);
         chart.addChangeListener(this);
         this.chartChangeEvents.clear();
@@ -220,8 +230,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_zoomInDomain() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setDomainAxis(1, new NumberAxis("X2"));
         ChartPanel panel = new ChartPanel(chart);
@@ -238,8 +250,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_zoomInRange() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setRangeAxis(1, new NumberAxis("X2"));
         ChartPanel panel = new ChartPanel(chart);
@@ -256,8 +270,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_zoomOutDomain() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setDomainAxis(1, new NumberAxis("X2"));
         ChartPanel panel = new ChartPanel(chart);
@@ -274,8 +290,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_zoomOutRange() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setRangeAxis(1, new NumberAxis("X2"));
         ChartPanel panel = new ChartPanel(chart);
@@ -292,8 +310,11 @@ public class ChartPanelTest
     @Test
     public void test2502355_restoreAutoDomainBounds() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
+    	
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setDomainAxis(1, new NumberAxis("X2"));
         ChartPanel panel = new ChartPanel(chart);
@@ -310,8 +331,10 @@ public class ChartPanelTest
     @Test
     public void test2502355_restoreAutoRangeBounds() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setRangeAxis(1, new NumberAxis("X2"));
         ChartPanel panel = new ChartPanel(chart);
@@ -328,8 +351,10 @@ public class ChartPanelTest
     @Test
     public void testSetMouseWheelEnabled() {
         DefaultXYDataset dataset = new DefaultXYDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X",
-                "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("TestChart", "X","Y", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         ChartPanel panel = new ChartPanel(chart);
         panel.setMouseWheelEnabled(true);
         assertTrue(panel.isMouseWheelEnabled());

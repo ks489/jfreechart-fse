@@ -23,6 +23,7 @@ import javax.swing.table.TableColumnModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.ChartFactoryClient;
 import org.jfree.chart.panel.selectionhandler.EntitySelectionManager;
 import org.jfree.chart.panel.selectionhandler.FreeRegionSelectionHandler;
 import org.jfree.chart.panel.selectionhandler.MouseClickSelectionHandler;
@@ -123,8 +124,11 @@ public class SelectionDemo1 extends ApplicationFrame implements
      */
     private static JFreeChart createChart(XYDataset dataset, 
             DatasetSelectionExtension<XYCursor> ext) {
-        JFreeChart chart = ChartFactory.createTimeSeriesChart("Stock Prices", 
-                "Date", "Price Per Unit", dataset);
+        //JFreeChart chart = ChartFactory.createTimeSeriesChart("Stock Prices", "Date", "Price Per Unit", dataset);
+        
+        org.jfree.chart.charttypes.TimeSeries timeseries = new org.jfree.chart.charttypes.TimeSeries("Date","Price Per Unit", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(timeseries);
+    	JFreeChart chart = chartClient.createChart("XY Line Chart");
 
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setDomainPannable(true);

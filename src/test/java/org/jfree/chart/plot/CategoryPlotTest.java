@@ -85,6 +85,9 @@ import org.jfree.chart.axis.AxisSpace;
 import org.jfree.chart.axis.CategoryAnchor;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Line;
 import org.jfree.chart.event.MarkerChangeListener;
 import org.jfree.chart.renderer.category.AreaRenderer;
 import org.jfree.chart.renderer.category.BarRenderer;
@@ -723,8 +726,10 @@ public class CategoryPlotTest {
     @Test
     public void testSerialization3() throws IOException, ClassNotFoundException {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        JFreeChart chart = ChartFactory.createBarChart("Test Chart", 
-                "Category Axis", "Value Axis", dataset);
+        //JFreeChart chart = ChartFactory.createBarChart("Test Chart", "Category Axis", "Value Axis", dataset);
+        Bar pieSimple = new Bar("Domain","Range", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
 
         JFreeChart chart2 = (JFreeChart) TestUtils.serialised(chart);
         // now check that the chart is usable...
@@ -742,8 +747,10 @@ public class CategoryPlotTest {
     @Test
     public void testSerialization4() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        JFreeChart chart = ChartFactory.createBarChart("Test Chart", 
-                "Category Axis", "Value Axis", dataset);
+        Bar pieSimple = new Bar("Category Axis","Value Axis", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
+        //JFreeChart chart = ChartFactory.createBarChart("Test Chart", "Category Axis", "Value Axis", dataset);
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.addRangeMarker(new ValueMarker(1.1), Layer.FOREGROUND);
         plot.addRangeMarker(new IntervalMarker(2.2, 3.3), Layer.BACKGROUND);
@@ -869,8 +876,11 @@ public class CategoryPlotTest {
     @Test
     public void test1654215() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        JFreeChart chart = ChartFactory.createLineChart("Title", "X", "Y",
-                dataset);
+        //JFreeChart chart = ChartFactory.createLineChart("Title", "X", "Y",dataset);
+        Line line = new Line("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(line);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.setRenderer(1, new LineAndShapeRenderer());
         BufferedImage image = new BufferedImage(200 , 100,

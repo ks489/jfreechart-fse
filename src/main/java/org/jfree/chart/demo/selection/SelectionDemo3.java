@@ -26,6 +26,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.ScatterPlot;
 import org.jfree.chart.panel.selectionhandler.EntitySelectionManager;
 import org.jfree.chart.panel.selectionhandler.MouseClickSelectionHandler;
 import org.jfree.chart.panel.selectionhandler.RectangularRegionSelectionHandler;
@@ -94,8 +96,10 @@ public class SelectionDemo3 extends ApplicationFrame
 
     private static JFreeChart createChart(XYDataset dataset, 
             DatasetSelectionExtension<XYCursor> ext) {
-        JFreeChart chart = ChartFactory.createScatterPlot("SelectionDemo3",
-                "X", "Y", dataset);
+        //JFreeChart chart = ChartFactory.createScatterPlot("SelectionDemo3", "X", "Y", dataset);
+    	ScatterPlot scatterPlot = new ScatterPlot("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(scatterPlot);
+    	JFreeChart chart = chartClient.createChart("Selection Demo3");
 
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setNoDataMessage("NO DATA");

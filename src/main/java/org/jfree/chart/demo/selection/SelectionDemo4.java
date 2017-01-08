@@ -24,6 +24,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
 import org.jfree.chart.panel.selectionhandler.EntitySelectionManager;
 import org.jfree.chart.panel.selectionhandler.FreePathSelectionHandler;
 import org.jfree.chart.panel.selectionhandler.MouseClickSelectionHandler;
@@ -141,8 +142,11 @@ public class SelectionDemo4 extends ApplicationFrame implements
      */
     private static JFreeChart createChart(IntervalXYDataset dataset, 
             DatasetSelectionExtension<XYCursor> ext) {
-        JFreeChart chart = ChartFactory.createHistogram("SelectionDemo4", null,
-                  null, dataset);
+        //JFreeChart chart = ChartFactory.createHistogram("SelectionDemo4", null,null, dataset);
+    	org.jfree.chart.charttypes.Histogram histogram = new org.jfree.chart.charttypes.Histogram(null, null, dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(histogram);
+    	JFreeChart chart = chartClient.createChart("SelectionDemo4");
+    	
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setDomainPannable(true);
         plot.setRangePannable(true);

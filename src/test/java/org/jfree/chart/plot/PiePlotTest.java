@@ -83,6 +83,8 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.chart.LegendItem;
 import org.jfree.chart.TestUtils;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.PieSimple;
 
 /**
  * Some tests for the {@link PiePlot} class.
@@ -609,7 +611,11 @@ public class PiePlotTest  {
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("L1", 12.0);
         dataset.setValue("L2", 11.0);
-        JFreeChart chart = ChartFactory.createPieChart("Test", dataset);
+        
+        PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
+        //JFreeChart chart = ChartFactory.createPieChart("Test", dataset);
         PiePlot plot = (PiePlot) chart.getPlot();
         plot.setLegendLabelGenerator(new NullLegendLabelGenerator());
 

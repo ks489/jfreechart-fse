@@ -40,6 +40,9 @@
 
 package org.jfree.chart;
 
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Line;
+import org.jfree.chart.charttypes.Waterfall;
 import org.jfree.chart.labels.CategoryToolTipGenerator;
 import org.jfree.chart.labels.StandardCategoryToolTipGenerator;
 import org.jfree.chart.plot.CategoryPlot;
@@ -138,8 +141,11 @@ public class WaterfallChartTest  {
              {2, 3}};
         CategoryDataset dataset = DatasetUtilities.createCategoryDataset("S",
                 "C", data);
-        return ChartFactory.createWaterfallChart("Waterfall Chart", "Domain",
-                "Range", dataset);
+        //return ChartFactory.createWaterfallChart("Waterfall Chart", "Domain","Range", dataset);
+        Waterfall waterfall = new Waterfall("Domain","Range", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(waterfall);
+    	JFreeChart chart = chartClient.createChart("Waterfall Chart");
+    	return chart;
     }
 
 }

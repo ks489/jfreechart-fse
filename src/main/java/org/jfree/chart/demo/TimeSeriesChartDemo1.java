@@ -51,6 +51,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.drawable.ColorPainter;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
 import org.jfree.chart.ui.RectangleInsets;
 import org.jfree.chart.ui.WindowUtils;
 import org.jfree.chart.plot.XYPlot;
@@ -92,10 +93,10 @@ public class TimeSeriesChartDemo1 extends ApplicationFrame {
      */
     private static JFreeChart createChart(XYDataset dataset) {
 
-        JFreeChart chart = ChartFactory.createTimeSeriesChart(
-                "Legal & General Unit Trust Prices", 
-                "Date", "Price Per Unit", 
-                dataset);
+        //JFreeChart chart = ChartFactory.createTimeSeriesChart("Legal & General Unit Trust Prices", "Date", "Price Per Unit", dataset);
+    	org.jfree.chart.charttypes.TimeSeries timeseries = new org.jfree.chart.charttypes.TimeSeries("Date","Price Per Unit", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(timeseries);
+    	JFreeChart chart = chartClient.createChart("Legal & General Unit Trust Prices");
 
         chart.setBackgroundPainter(new ColorPainter(Color.WHITE));
 

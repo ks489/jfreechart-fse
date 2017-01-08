@@ -46,6 +46,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
 import org.jfree.chart.ui.WindowUtils;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.data.category.CategoryDataset;
@@ -127,8 +129,10 @@ public class BarChartDemo1 extends ApplicationFrame {
      * @return The chart.
      */
     private static JFreeChart createChart(CategoryDataset dataset) {
-        JFreeChart chart = ChartFactory.createBarChart("Bar Chart Demo 1",
-                "Category", "Value", dataset);
+        //JFreeChart chart = ChartFactory.createBarChart("Bar Chart Demo 1", "Category", "Value", dataset);
+    	Bar pieSimple = new Bar("Category","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Bar Chart Demo 1");
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
 
         // ******************************************************************

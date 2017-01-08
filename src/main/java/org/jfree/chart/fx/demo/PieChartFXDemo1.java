@@ -47,6 +47,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.PieSimple;
 import org.jfree.chart.fx.ChartViewer;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.title.TextTitle;
@@ -85,9 +87,10 @@ public class PieChartFXDemo1 extends Application {
      */
     private static JFreeChart createChart(PieDataset dataset) {
 
-        JFreeChart chart = ChartFactory.createPieChart(
-            "Smart Phones Manufactured / Q3 2011",  // chart title
-            dataset);
+    	PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
+        //JFreeChart chart = ChartFactory.createPieChart("Smart Phones Manufactured / Q3 2011",  // chart titledataset);
 
         // set a custom background for the chart
         // FIXME: convert to painter

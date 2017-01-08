@@ -41,6 +41,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.StackedXYArea;
+import org.jfree.chart.charttypes.XYLine;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.StandardXYToolTipGenerator;
@@ -153,9 +156,11 @@ public class XYLineChartTest  {
         XYDataset dataset = new XYSeriesCollection(series1);
 
         // create the chart...
-        return ChartFactory.createXYLineChart("XY Line Chart", "Domain",
-                "Range", dataset);
-
+        //return ChartFactory.createXYLineChart("XY Line Chart", "Domain","Range", dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
+    	return chart;
     }
 
     /**

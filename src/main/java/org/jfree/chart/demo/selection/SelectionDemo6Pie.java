@@ -24,6 +24,9 @@ import javax.swing.table.TableColumnModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.BoxAndWhiskerXY;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.PieSimple;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.panel.AbstractMouseHandler;
 import org.jfree.chart.panel.selectionhandler.EntitySelectionManager;
@@ -89,8 +92,13 @@ public class SelectionDemo6Pie extends ApplicationFrame
     }
 
     private static JFreeChart createChart(final PieDataset dataset, DatasetSelectionExtension<PieCursor<String>> ext) {
-        JFreeChart chart = ChartFactory.createPieChart("Pie Chart Demo 2",
-                dataset);
+    	
+    	//ChartFactoryClient chartFactory = 
+    	PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	
+        //JFreeChart chart = ChartFactory.createPieChart("Pie Chart Demo 2",dataset);
           
         final PiePlot plot = (PiePlot) chart.getPlot();
         plot.setSectionPaint("One", new Color(160, 160, 255));

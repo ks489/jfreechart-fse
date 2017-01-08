@@ -41,6 +41,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Line;
+import org.jfree.chart.charttypes.StackedArea;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.CategoryToolTipGenerator;
@@ -171,9 +174,11 @@ public class LineChartTest  {
 
         CategoryDataset dataset = DatasetUtilities.createCategoryDataset("S",
                 "C", data);
-
-        return ChartFactory.createLineChart("Line Chart", "Domain", "Range",
-                dataset);
+        Line line = new Line("Domain","Range", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(line);
+    	JFreeChart chart = chartClient.createChart("Line Chart");
+    	return chart;
+        //return ChartFactory.createLineChart("Line Chart", "Domain", "Range",dataset);
 
     }
 

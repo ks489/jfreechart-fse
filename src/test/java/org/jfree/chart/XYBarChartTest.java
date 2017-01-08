@@ -41,6 +41,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.ScatterPlot;
+import org.jfree.chart.charttypes.XYBar;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.StandardXYToolTipGenerator;
@@ -154,8 +157,11 @@ public class XYBarChartTest  {
         series1.add(3.0, 3.0);
         IntervalXYDataset dataset = new XYBarDataset(new XYSeriesCollection(
                 series1), 1.0);
-        return ChartFactory.createXYBarChart("XY Bar Chart", "Domain", false,
-                "Range", dataset);
+        //return ChartFactory.createXYBarChart("XY Bar Chart", "Domain", false, "Range", dataset);
+        XYBar xyBar = new XYBar("Domain",false, "Range", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyBar);
+    	JFreeChart chart = chartClient.createChart("XY Bar Chart");
+    	return chart;
     }
 
     /**

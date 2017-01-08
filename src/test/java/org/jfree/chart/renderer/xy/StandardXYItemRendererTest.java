@@ -53,6 +53,8 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.LegendItem;
 import org.jfree.chart.TestUtils;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.XYLine;
 import org.jfree.chart.entity.EntityCollection;
 import org.jfree.chart.entity.XYItemEntity;
 import org.jfree.chart.plot.XYPlot;
@@ -262,8 +264,10 @@ public class StandardXYItemRendererTest  {
         XYSeries s1 = new XYSeries("S1");
         s1.add(10.0, 10.0);
         dataset.addSeries(s1);
-        JFreeChart chart = ChartFactory.createXYLineChart("Title", "X", "Y",
-                dataset);
+        //JFreeChart chart = ChartFactory.createXYLineChart("Title", "X", "Y",dataset);
+        XYLine xyline = new XYLine("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyline);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         plot.setRenderer(new StandardXYItemRenderer());
         NumberAxis xAxis = (NumberAxis) plot.getDomainAxis();

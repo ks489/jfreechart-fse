@@ -49,6 +49,10 @@ package org.jfree.chart.axis;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Line;
+import org.jfree.chart.charttypes.ScatterPlot;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
@@ -212,8 +216,10 @@ public class NumberAxisTest  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(100.0, "Row 1", "Column 1");
         dataset.setValue(200.0, "Row 1", "Column 2");
-        JFreeChart chart = ChartFactory.createBarChart("Test",
-                "Categories", "Value", dataset);
+        Bar pieSimple = new Bar("Categories","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Test");
+        //JFreeChart chart = ChartFactory.createBarChart("Test","Categories", "Value", dataset);
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         NumberAxis axis = (NumberAxis) plot.getRangeAxis();
         assertEquals(axis.getLowerBound(), 0.0, EPSILON);
@@ -230,8 +236,11 @@ public class NumberAxisTest  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(100.0, "Row 1", "Column 1");
         dataset.setValue(200.0, "Row 1", "Column 2");
-        JFreeChart chart = ChartFactory.createLineChart("Test", "Categories",
-                "Value", dataset);
+        //JFreeChart chart = ChartFactory.createLineChart("Test", "Categories",  "Value", dataset);
+        Line line = new Line("Categories","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(line);
+    	JFreeChart chart = chartClient.createChart("Test");
+    	
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         NumberAxis axis = (NumberAxis) plot.getRangeAxis();
         axis.setAutoRangeIncludesZero(false);
@@ -250,8 +259,11 @@ public class NumberAxisTest  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(100.0, "Row 1", "Column 1");
         dataset.setValue(200.0, "Row 1", "Column 2");
-        JFreeChart chart = ChartFactory.createLineChart("Test", "Categories",
-                "Value", dataset);
+        //JFreeChart chart = ChartFactory.createLineChart("Test", "Categories","Value", dataset);
+        Line line = new Line("Categories","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(line);
+    	JFreeChart chart = chartClient.createChart("Test");
+    	
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         NumberAxis axis = (NumberAxis) plot.getRangeAxis();
         axis.setAutoRangeIncludesZero(false);
@@ -276,8 +288,10 @@ public class NumberAxisTest  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(100.0, "Row 1", "Column 1");
         dataset.setValue(200.0, "Row 1", "Column 2");
-        JFreeChart chart = ChartFactory.createBarChart("Test", "Categories",
-                "Value", dataset);
+        Bar pieSimple = new Bar("Categories","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Test");
+        //JFreeChart chart = ChartFactory.createBarChart("Test", "Categories", "Value", dataset);
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         NumberAxis axis = (NumberAxis) plot.getRangeAxis();
         axis.setAutoRangeIncludesZero(false);
@@ -327,8 +341,11 @@ public class NumberAxisTest  {
         series.add(3.0, 3.0);
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
-        JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y",
-                dataset);
+        //JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y", dataset);
+        ScatterPlot scatterPlot = new ScatterPlot("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(scatterPlot);
+    	JFreeChart chart = chartClient.createChart("Test");
+    	
         XYPlot plot = (XYPlot) chart.getPlot();
         NumberAxis axis = (NumberAxis) plot.getDomainAxis();
         axis.setAutoRangeIncludesZero(false);
@@ -348,8 +365,11 @@ public class NumberAxisTest  {
         series.add(3.0, 3.0);
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
-        JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y",
-                dataset);
+        //JFreeChart chart = ChartFactory.createScatterPlot("Test", "X", "Y",dataset);
+        ScatterPlot scatterPlot = new ScatterPlot("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(scatterPlot);
+    	JFreeChart chart = chartClient.createChart("Test");
+    	
         XYPlot plot = (XYPlot) chart.getPlot();
         NumberAxis axis = (NumberAxis) plot.getRangeAxis();
         axis.setAutoRangeIncludesZero(false);

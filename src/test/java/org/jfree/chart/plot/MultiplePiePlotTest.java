@@ -46,7 +46,10 @@
 package org.jfree.chart.plot;
 
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
 import org.jfree.chart.LegendItem;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.PieSimple;
 import org.jfree.chart.event.PlotChangeEvent;
 import org.jfree.chart.event.PlotChangeListener;
 import org.jfree.chart.util.TableOrder;
@@ -143,9 +146,14 @@ public class MultiplePiePlotTest
                 3.0f, 4.0f, Color.yellow));
         assertEquals(p1, p2);
 
-        p1.setPieChart(ChartFactory.createPieChart("Title", null));
+        PieSimple pieSimple = new PieSimple(null);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
+        //p1.setPieChart(ChartFactory.createPieChart("Title", null));
+    	p1.setPieChart(chart);
         assertFalse(p1.equals(p2));
-        p2.setPieChart(ChartFactory.createPieChart("Title", null));
+        //p2.setPieChart(ChartFactory.createPieChart("Title", null));
+        p2.setPieChart(chart);
         assertEquals(p1, p2);
 
         p1.setLegendItemShape(new Rectangle2D.Double(1.0, 2.0, 3.0, 4.0));

@@ -45,6 +45,8 @@ package org.jfree.chart.plot;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Pie3D;
 import org.junit.Test;
 
 import java.awt.Graphics2D;
@@ -118,7 +120,10 @@ public class PiePlot3DTest  {
      */
     @Test
     public void testDrawWithNullDataset() {
-        JFreeChart chart = ChartFactory.createPieChart3D("Test", null);
+        //JFreeChart chart = ChartFactory.createPieChart3D("Test", null);
+    	Pie3D pieSimple = new Pie3D(null);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
             BufferedImage image = new BufferedImage(200 , 100,
                     BufferedImage.TYPE_INT_RGB);
             Graphics2D g2 = image.createGraphics();

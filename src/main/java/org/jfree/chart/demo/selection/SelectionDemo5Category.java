@@ -31,6 +31,8 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.CategoryLabelPositions;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
 import org.jfree.chart.labels.StandardCategorySeriesLabelGenerator;
 import org.jfree.chart.panel.selectionhandler.EntitySelectionManager;
 import org.jfree.chart.panel.selectionhandler.MouseClickSelectionHandler;
@@ -128,9 +130,11 @@ public class SelectionDemo5Category extends ApplicationFrame
     private static JFreeChart createChart(CategoryDataset dataset, DatasetSelectionExtension<CategoryCursor<String, String>> ext) {
 
         // create the chart...
-        JFreeChart chart = ChartFactory.createBarChart("Bar Chart Demo 1", 
-                 "Category", "Value", dataset);
-
+        //JFreeChart chart = ChartFactory.createBarChart("Bar Chart Demo 1", "Category", "Value", dataset);
+    	Bar pieSimple = new Bar("Category","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Bar Chart Demo 1");
+    	
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.setDomainGridlinesVisible(true);
         plot.setRangeCrosshairVisible(true);

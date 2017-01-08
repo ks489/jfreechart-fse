@@ -44,6 +44,9 @@ package org.jfree.chart.axis;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartRenderingInfo;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Line;
+import org.jfree.chart.charttypes.ScatterPlot;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.ui.RectangleInsets;
@@ -221,8 +224,11 @@ public class ValueAxisTest  {
         series.add(200.0, 2.2);
         XYSeriesCollection dataset = new XYSeriesCollection(series);
         dataset.setIntervalWidth(0.0);
-        JFreeChart chart = ChartFactory.createScatterPlot(
-                "Title", "X", "Y", dataset);
+        //JFreeChart chart = ChartFactory.createScatterPlot("Title", "X", "Y", dataset);
+        ScatterPlot scatterPlot = new ScatterPlot("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(scatterPlot);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	
         ValueAxis domainAxis = ((XYPlot) chart.getPlot()).getDomainAxis();
         Range r = domainAxis.getRange();
         assertEquals(110.0, r.getLength(), EPSILON);
@@ -239,8 +245,11 @@ public class ValueAxisTest  {
     @Test
     public void test3555275() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        JFreeChart chart = ChartFactory.createLineChart("Title", "X", "Y",
-                dataset);
+        //JFreeChart chart = ChartFactory.createLineChart("Title", "X", "Y",dataset);
+        Line line = new Line("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(line);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.setInsets(RectangleInsets.ZERO_INSETS);
         plot.setAxisOffset(RectangleInsets.ZERO_INSETS);

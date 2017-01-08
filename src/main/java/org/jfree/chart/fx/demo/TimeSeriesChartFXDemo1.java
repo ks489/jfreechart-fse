@@ -44,6 +44,7 @@ import javafx.stage.Stage;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.charttypes.ChartFactoryClient;
 import org.jfree.chart.fx.ChartViewer;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
@@ -73,12 +74,16 @@ public class TimeSeriesChartFXDemo1 extends Application {
      */
     private static JFreeChart createChart(XYDataset dataset) {
 
-        JFreeChart chart = ChartFactory.createTimeSeriesChart(
+        /*JFreeChart chart = ChartFactory.createTimeSeriesChart(
             "International Coffee Organisation : Coffee Prices",    // title
             null,             // x-axis label
             "US cents/lb",      // y-axis label
-            dataset);
+            dataset);*/
 
+        org.jfree.chart.charttypes.TimeSeries timeseries = new org.jfree.chart.charttypes.TimeSeries(null,"US cents/lb", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(timeseries);
+    	JFreeChart chart = chartClient.createChart("International Coffee Organisation : Coffee Prices");
+    	
         String fontName = "Palatino";
         chart.getTitle().setFont(new Font(fontName, Font.BOLD, 18));
         chart.addSubtitle(new TextTitle("Source: http://www.ico.org/historical/2010-19/PDF/HIST-PRICES.pdf", 

@@ -48,6 +48,8 @@ package org.jfree.chart.renderer.xy;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.StackedXYArea;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.util.PublicCloneable;
 import org.jfree.data.Range;
@@ -170,8 +172,10 @@ public class StackedXYAreaRendererTest  {
     public void testFindRangeBounds() {
         TableXYDataset dataset
                 = RendererXYPackageTests.createTestTableXYDataset();
-        JFreeChart chart = ChartFactory.createStackedXYAreaChart(
-                "Test Chart", "X", "Y", dataset);
+        //JFreeChart chart = ChartFactory.createStackedXYAreaChart("Test Chart", "X", "Y", dataset);
+        StackedXYArea stackedxyarea = new StackedXYArea("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(stackedxyarea);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
         XYPlot plot = (XYPlot) chart.getPlot();
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
         Range bounds = rangeAxis.getRange();

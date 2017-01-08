@@ -41,6 +41,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.ScatterPlot;
+import org.jfree.chart.charttypes.XYArea;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.StandardXYToolTipGenerator;
@@ -151,8 +154,11 @@ public class XYAreaChartTest  {
         series1.add(2.0, 2.0);
         series1.add(3.0, 3.0);
         XYDataset dataset = new XYSeriesCollection(series1);
-        return ChartFactory.createXYAreaChart("Area Chart", "Domain", "Range",
-                dataset);
+        //return ChartFactory.createXYAreaChart("Area Chart", "Domain", "Range",dataset);
+        XYArea xyArea = new XYArea("X","Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyArea);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	return chart;
     }
 
     /**

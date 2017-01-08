@@ -58,6 +58,9 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.LegendItem;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.ScatterPlot;
+import org.jfree.chart.charttypes.XYBar;
 import org.jfree.chart.ui.GradientPaintTransformType;
 import org.jfree.chart.ui.StandardGradientPaintTransformer;
 import org.jfree.chart.util.PublicCloneable;
@@ -257,8 +260,11 @@ public class XYBarRendererTest  {
     public void testFindDomainBounds() {
         XYSeriesCollection dataset
                 = RendererXYPackageTests.createTestXYSeriesCollection();
-        JFreeChart chart = ChartFactory.createXYBarChart("Test Chart", "X",
-                false, "Y", dataset);
+        //JFreeChart chart = ChartFactory.createXYBarChart("Test Chart", "X", false, "Y", dataset);
+        XYBar xyBar = new XYBar("X", false, "Y", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(xyBar);
+    	JFreeChart chart = chartClient.createChart("Test Chart");
+    	
         XYPlot plot = (XYPlot) chart.getPlot();
         NumberAxis domainAxis = (NumberAxis) plot.getDomainAxis();
         domainAxis.setAutoRangeIncludesZero(false);

@@ -41,6 +41,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.TimeSeries;
+import org.jfree.chart.charttypes.XYStep;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.StandardXYToolTipGenerator;
@@ -152,8 +155,11 @@ public class TimeSeriesChartTest  {
         series1.add(2.0, 2.0);
         series1.add(3.0, 3.0);
         XYDataset dataset = new XYSeriesCollection(series1);
-        return ChartFactory.createTimeSeriesChart("XY Line Chart", "Domain",
-                "Range", dataset);
+        //return ChartFactory.createTimeSeriesChart("XY Line Chart", "Domain","Range", dataset);
+        TimeSeries timeseries = new TimeSeries("Domain","Range", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(timeseries);
+    	JFreeChart chart = chartClient.createChart("XY Line Chart");
+    	return chart;
     }
 
     /**

@@ -47,6 +47,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.StandardChartTheme;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.PieSimple;
 import org.jfree.chart.ui.WindowUtils;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
@@ -101,9 +103,11 @@ public class PieChartDemo1 extends ApplicationFrame {
      * @return A chart.
      */
     private static JFreeChart createChart(PieDataset dataset) {
-
-        JFreeChart chart = ChartFactory.createPieChart("Pie Chart Demo 1",
-                dataset);
+    	PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	
+        //JFreeChart chart = ChartFactory.createPieChart("Pie Chart Demo 1", dataset);
 
         PiePlot plot = (PiePlot) chart.getPlot();
         plot.setSectionOutlinesVisible(false);

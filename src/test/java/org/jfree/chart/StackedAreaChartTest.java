@@ -41,6 +41,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.StackedArea;
+import org.jfree.chart.charttypes.StackedBar;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.CategoryToolTipGenerator;
@@ -172,9 +175,11 @@ public class StackedAreaChartTest  {
 
         CategoryDataset dataset = DatasetUtilities.createCategoryDataset("S",
                 "C", data);
-
-        return ChartFactory.createStackedAreaChart("Stacked Area Chart",
-                "Domain", "Range", dataset);
+        StackedArea stackedArea = new StackedArea("Domain","Range", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(stackedArea);
+    	JFreeChart chart = chartClient.createChart("Stacked Area Chart");
+    	return chart;
+        //return ChartFactory.createStackedAreaChart("Stacked Area Chart","Domain", "Range", dataset);
 
     }
 

@@ -40,6 +40,9 @@
 
 package org.jfree.chart;
 
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Gantt;
+import org.jfree.chart.charttypes.Line;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.CategoryToolTipGenerator;
@@ -162,8 +165,11 @@ public class GanttChartTest  {
      * @return The chart.
      */
     private static JFreeChart createGanttChart() {
-        return ChartFactory.createGanttChart("Gantt Chart", "Domain", "Range",
-                null);
+        //return ChartFactory.createGanttChart("Gantt Chart", "Domain", "Range",null);
+    	Gantt gantt = new Gantt("Categories","Value", null);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(gantt);
+    	JFreeChart chart = chartClient.createChart("Gantt Chart");
+    	return chart;
     }
 
     /**

@@ -44,6 +44,9 @@
 package org.jfree.chart;
 
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Pie3D;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.labels.CategoryToolTipGenerator;
@@ -168,8 +171,11 @@ public class BarChartTest  {
              {2, 3}};
         CategoryDataset dataset = DatasetUtilities.createCategoryDataset("S",
                 "C", data);
-        return ChartFactory.createBarChart("Bar Chart", "Domain", "Range",
-                dataset);
+        Bar pieSimple = new Bar("Domain","Range", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Bar Chart");
+    	return chart;
+        //return ChartFactory.createBarChart("Bar Chart", "Domain", "Range",dataset);
     }
 
     /**

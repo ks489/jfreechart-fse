@@ -65,6 +65,10 @@ import java.net.URL;
 import java.util.List;
 import javax.swing.ImageIcon;
 import org.jfree.chart.drawable.ColorPainter;
+import org.jfree.chart.charttypes.Bar;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.Pie3D;
+import org.jfree.chart.charttypes.PieSimple;
 import org.jfree.chart.drawable.BorderPainter;
 import org.jfree.chart.event.ChartChangeEvent;
 import org.jfree.chart.event.ChartChangeListener;
@@ -115,7 +119,11 @@ public class JFreeChartTest  implements ChartChangeListener {
         data.setValue("Java", new Double(43.2));
         data.setValue("Visual Basic", new Double(0.0));
         data.setValue("C/C++", new Double(17.5));
-        this.pieChart = ChartFactory.createPieChart("Pie Chart", data);
+        
+        PieSimple pieSimple = new PieSimple(data);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	this.pieChart = chartClient.createChart("Title");
+        //this.pieChart = ChartFactory.createPieChart("Pie Chart", data);
     }
 
     /**
@@ -231,7 +239,10 @@ public class JFreeChartTest  implements ChartChangeListener {
     @Test
     public void testGetSubtitle() {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        //JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
         Title t = chart.getSubtitle(0);
         assertTrue(t instanceof LegendTitle);
 
@@ -270,7 +281,10 @@ public class JFreeChartTest  implements ChartChangeListener {
         data.setValue("Type 1", 54.5);
         data.setValue("Type 2", 23.9);
         data.setValue("Type 3", 45.8);
-        JFreeChart c1 = ChartFactory.createPieChart("Test", data);
+        //JFreeChart c1 = ChartFactory.createPieChart("Test", data);
+        PieSimple pieSimple = new PieSimple(data);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart c1 = chartClient.createChart("Title");
         JFreeChart c2 = (JFreeChart) TestUtils.serialised(c1);
         assertEquals(c1, c2);
         LegendTitle lt2 = c2.getLegend();
@@ -286,7 +300,10 @@ public class JFreeChartTest  implements ChartChangeListener {
         data.setValue("Type 1", 54.5);
         data.setValue("Type 2", 23.9);
         data.setValue("Type 3", 45.8);
-        JFreeChart c1 = ChartFactory.createPieChart3D("Test", data);
+        //JFreeChart c1 = ChartFactory.createPieChart3D("Test", data);
+        Pie3D pieSimple = new Pie3D(data);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart c1 = chartClient.createChart("Title");
         JFreeChart c2 = (JFreeChart) TestUtils.serialised(c1);
         assertEquals(c1, c2);
     }
@@ -339,8 +356,10 @@ public class JFreeChartTest  implements ChartChangeListener {
         dataset.addValue(3.0, series3, category8);
 
         // create the chart...
-        JFreeChart c1 = ChartFactory.createBarChart("Vertical Bar Chart",
-                "Category", "Value", dataset);
+        //JFreeChart c1 = ChartFactory.createBarChart("Vertical Bar Chart","Category", "Value", dataset);
+        Bar pieSimple = new Bar("Category","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart c1 = chartClient.createChart("Vertical Bar Chart");
         JFreeChart c2 = (JFreeChart) TestUtils.serialised(c1);
         assertEquals(c1, c2);
     }
@@ -358,8 +377,11 @@ public class JFreeChartTest  implements ChartChangeListener {
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         dataset.addSeries(series);
 
-        JFreeChart c1 = ChartFactory.createTimeSeriesChart("Test", "Date",
-                "Value", dataset);
+        //JFreeChart c1 = ChartFactory.createTimeSeriesChart("Test", "Date","Value", dataset);
+        org.jfree.chart.charttypes.TimeSeries timeseries = new org.jfree.chart.charttypes.TimeSeries("Date","Value", dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(timeseries);
+    	JFreeChart c1 = chartClient.createChart("Test");
+    	
         JFreeChart c2 = (JFreeChart) TestUtils.serialised(c1);
         assertEquals(c1, c2);
     }
@@ -370,7 +392,11 @@ public class JFreeChartTest  implements ChartChangeListener {
     @Test
     public void testAddSubtitle() {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        //JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        
+        PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
 
         TextTitle t0 = new TextTitle("T0");
         chart.addSubtitle(0, t0);
@@ -414,7 +440,10 @@ public class JFreeChartTest  implements ChartChangeListener {
     @Test
     public void testGetSubtitles() {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        //JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
         List<Title> subtitles = chart.getSubtitles();
 
         assertEquals(1, chart.getSubtitleCount());
@@ -430,7 +459,10 @@ public class JFreeChartTest  implements ChartChangeListener {
     @Test
     public void testLegendEvents() {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        //JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
         chart.addChangeListener(this);
         this.lastChartChangeEvent = null;
         LegendTitle legend = chart.getLegend();
@@ -444,7 +476,10 @@ public class JFreeChartTest  implements ChartChangeListener {
     @Test
     public void testTitleChangeEvent() {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        //JFreeChart chart = ChartFactory.createPieChart("title", dataset);
+        PieSimple pieSimple = new PieSimple(dataset);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
         chart.addChangeListener(this);
         this.lastChartChangeEvent = null;
         TextTitle t = chart.getTitle();
@@ -475,8 +510,11 @@ public class JFreeChartTest  implements ChartChangeListener {
     @Test
     public void testBug942() throws Exception {
         final String title = "Pie Chart Demo 1\n\n\ntestnew line";
-        assertEquals(title, ChartFactory.createPieChart(title, 
-                new DefaultPieDataset()).getTitle().getText());
+        PieSimple pieSimple = new PieSimple(new DefaultPieDataset());
+    	ChartFactoryClient chartClient = new ChartFactoryClient(pieSimple);
+    	JFreeChart chart = chartClient.createChart("Title");
+    	assertEquals(title, chart.getTitle().getText());
+        //assertEquals(title, ChartFactory.createPieChart(title, new DefaultPieDataset()).getTitle().getText());
     }
 
     /** The last ChartChangeEvent received. */

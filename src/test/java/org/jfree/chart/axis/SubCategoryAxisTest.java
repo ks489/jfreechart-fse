@@ -44,6 +44,8 @@ package org.jfree.chart.axis;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.charttypes.ChartFactoryClient;
+import org.jfree.chart.charttypes.StackedBar;
 import org.jfree.chart.plot.CategoryPlot;
 import org.junit.Test;
 
@@ -154,8 +156,10 @@ public class SubCategoryAxisTest  {
      */
     @Test
     public void test2275695() {
-        JFreeChart chart = ChartFactory.createStackedBarChart("Test",
-                "Category", "Value", null);
+        //JFreeChart chart = ChartFactory.createStackedBarChart("Test", "Category", "Value", null);
+    	StackedBar stackedBar = new StackedBar("Category","Value", null);
+    	ChartFactoryClient chartClient = new ChartFactoryClient(stackedBar);
+    	JFreeChart chart = chartClient.createChart("Test");
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.setDomainAxis(new SubCategoryAxis("SubCategoryAxis"));
 
