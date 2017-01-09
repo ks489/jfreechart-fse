@@ -276,7 +276,7 @@ public abstract class ChartFactory {
      *
      * @since 1.0.7
      */
-    /*public static JFreeChart createPieChart(String title, PieDataset dataset,
+    public static JFreeChart createPieChart(String title, PieDataset dataset,
             Locale locale) {
 
         PiePlot plot = new PiePlot(dataset);
@@ -287,7 +287,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a pie chart with default settings.
@@ -300,7 +300,7 @@ public abstract class ChartFactory {
      *
      * @return A pie chart.
      */
-    /*public static JFreeChart createPieChart(String title, PieDataset dataset) {
+    public static JFreeChart createPieChart(String title, PieDataset dataset) {
 
         PiePlot plot = new PiePlot(dataset);
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator());
@@ -309,7 +309,7 @@ public abstract class ChartFactory {
         JFreeChart chart = new JFreeChart(title, plot);
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates a pie chart with default settings that compares 2 datasets.
@@ -349,7 +349,7 @@ public abstract class ChartFactory {
      *
      * @since 1.0.7
      */
-    /*public static JFreeChart createPieChart(String title, PieDataset dataset,
+    public static JFreeChart createPieChart(String title, PieDataset dataset,
             PieDataset previousDataset, int percentDiffForMaxScale,
             boolean greenForIncrease, Locale locale, boolean subTitle,
             boolean showDifference) {
@@ -421,7 +421,7 @@ public abstract class ChartFactory {
         }
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates a pie chart with default settings that compares 2 datasets.
@@ -458,7 +458,7 @@ public abstract class ChartFactory {
      *
      * @return A pie chart.
      */
-    /*public static JFreeChart createPieChart(String title,
+    public static JFreeChart createPieChart(String title,
             PieDataset dataset, PieDataset previousDataset,
             int percentDiffForMaxScale, boolean greenForIncrease,
             boolean subTitle, boolean showDifference) {
@@ -530,7 +530,7 @@ public abstract class ChartFactory {
         }
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates a ring chart with default settings.
@@ -546,7 +546,7 @@ public abstract class ChartFactory {
      *
      * @since 1.0.7
      */
-    /*public static JFreeChart createRingChart(String title, PieDataset dataset,
+    public static JFreeChart createRingChart(String title, PieDataset dataset,
             Locale locale) {
 
         RingPlot plot = new RingPlot(dataset);
@@ -556,7 +556,7 @@ public abstract class ChartFactory {
         JFreeChart chart = new JFreeChart(title, plot);
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates a ring chart with default settings.
@@ -569,7 +569,7 @@ public abstract class ChartFactory {
      *
      * @return A ring chart.
      */
-    /*public static JFreeChart createRingChart(String title, PieDataset dataset) {
+    public static JFreeChart createRingChart(String title, PieDataset dataset) {
 
         RingPlot plot = new RingPlot(dataset);
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator());
@@ -579,7 +579,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a chart that displays multiple pie plots.  The chart object
@@ -593,7 +593,7 @@ public abstract class ChartFactory {
      *
      * @return A chart.
      */
-    /*public static JFreeChart createMultiplePieChart(String title,
+    public static JFreeChart createMultiplePieChart(String title,
             CategoryDataset dataset, TableOrder order) {
 
         ParamChecks.nullNotPermitted(order, "order");
@@ -611,7 +611,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a 3D pie chart using the specified dataset.  The chart object
@@ -626,7 +626,7 @@ public abstract class ChartFactory {
      *
      * @since 1.0.7
      */
-    /*public static JFreeChart createPieChart3D(String title, PieDataset dataset,
+    public static JFreeChart createPieChart3D(String title, PieDataset dataset,
             Locale locale) {
 
         PiePlot3D plot = new PiePlot3D(dataset);
@@ -636,7 +636,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a 3D pie chart using the specified dataset.  The chart object
@@ -648,7 +648,7 @@ public abstract class ChartFactory {
      *
      * @return A pie chart.
      */
-    /*public static JFreeChart createPieChart3D(String title,
+    public static JFreeChart createPieChart3D(String title,
             PieDataset dataset) {
 
         PiePlot3D plot = new PiePlot3D(dataset);
@@ -658,7 +658,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a chart that displays multiple pie plots.  The chart object
@@ -672,7 +672,7 @@ public abstract class ChartFactory {
      *
      * @return A chart.
      */
-    /*public static JFreeChart createMultiplePieChart3D(String title,
+    public static JFreeChart createMultiplePieChart3D(String title,
             CategoryDataset dataset, TableOrder order) {
 
         ParamChecks.nullNotPermitted(order, "order");
@@ -699,7 +699,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a bar chart with a vertical orientation.  The chart object
@@ -717,7 +717,7 @@ public abstract class ChartFactory {
      *
      * @return A bar chart.
      */
-    /*public static JFreeChart createBarChart(String title,
+    public static JFreeChart createBarChart(String title,
             String categoryAxisLabel, String valueAxisLabel,
             CategoryDataset dataset) {
 
@@ -740,7 +740,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a stacked bar chart with default settings.  The chart object
@@ -758,7 +758,7 @@ public abstract class ChartFactory {
      *
      * @return A stacked bar chart.
      */
-    /*public static JFreeChart createStackedBarChart(String title,
+    public static JFreeChart createStackedBarChart(String title,
             String domainAxisLabel, String rangeAxisLabel,
             CategoryDataset dataset) {
 
@@ -775,7 +775,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates an area chart with default settings.  The chart object returned
@@ -792,7 +792,7 @@ public abstract class ChartFactory {
      *
      * @return An area chart.
      */
-    /*public static JFreeChart createAreaChart(String title,
+    public static JFreeChart createAreaChart(String title,
             String categoryAxisLabel, String valueAxisLabel,
             CategoryDataset dataset) {
 
@@ -811,7 +811,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a stacked area chart with default settings.  The chart object
@@ -829,7 +829,7 @@ public abstract class ChartFactory {
      *
      * @return A stacked area chart.
      */
-    /*public static JFreeChart createStackedAreaChart(String title,
+    public static JFreeChart createStackedAreaChart(String title,
             String categoryAxisLabel, String valueAxisLabel,
             CategoryDataset dataset) {
 
@@ -847,7 +847,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a line chart with default settings.  The chart object returned
@@ -864,7 +864,7 @@ public abstract class ChartFactory {
      *
      * @return A line chart.
      */
-    /*public static JFreeChart createLineChart(String title,
+    public static JFreeChart createLineChart(String title,
             String categoryAxisLabel, String valueAxisLabel,
             CategoryDataset dataset) {
 
@@ -880,7 +880,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a Gantt chart using the supplied attributes plus default values
@@ -898,7 +898,7 @@ public abstract class ChartFactory {
      *
      * @return A Gantt chart.
      */
-    /*public static JFreeChart createGanttChart(String title,
+    public static JFreeChart createGanttChart(String title,
             String categoryAxisLabel, String dateAxisLabel,
             IntervalCategoryDataset dataset) {
 
@@ -917,7 +917,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a waterfall chart.  The chart object returned by this method
@@ -934,7 +934,7 @@ public abstract class ChartFactory {
      *
      * @return A waterfall chart.
      */
-    /*public static JFreeChart createWaterfallChart(String title,
+    public static JFreeChart createWaterfallChart(String title,
             String categoryAxisLabel, String valueAxisLabel,
             CategoryDataset dataset) {
 
@@ -971,7 +971,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a polar plot for the specified dataset (x-values interpreted as
@@ -984,7 +984,7 @@ public abstract class ChartFactory {
      *
      * @return A chart.
      */
-    /*public static JFreeChart createPolarChart(String title, XYDataset dataset) {
+    public static JFreeChart createPolarChart(String title, XYDataset dataset) {
         PolarPlot plot = new PolarPlot();
         plot.setDataset(dataset);
         NumberAxis rangeAxis = new NumberAxis();
@@ -996,7 +996,7 @@ public abstract class ChartFactory {
         JFreeChart chart = new JFreeChart(title, plot);
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates a scatter plot with default settings.  The chart object
@@ -1012,7 +1012,7 @@ public abstract class ChartFactory {
      *
      * @return A scatter plot.
      */
-    /*public static JFreeChart createScatterPlot(String title, String xAxisLabel,
+    public static JFreeChart createScatterPlot(String title, String xAxisLabel,
             String yAxisLabel, XYDataset dataset) {
 
         NumberAxis xAxis = new NumberAxis(xAxisLabel);
@@ -1030,7 +1030,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates and returns a default instance of an XY bar chart.
@@ -1048,7 +1048,7 @@ public abstract class ChartFactory {
      *
      * @return An XY bar chart.
      */
-    /*public static JFreeChart createXYBarChart(String title, String xAxisLabel,
+    public static JFreeChart createXYBarChart(String title, String xAxisLabel,
             boolean dateAxis, String yAxisLabel, IntervalXYDataset dataset) {
 
         ValueAxis domainAxis;
@@ -1078,7 +1078,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates an area chart using an {@link XYDataset}.
@@ -1095,7 +1095,7 @@ public abstract class ChartFactory {
      *
      * @return An XY area chart.
      */
-    /*public static JFreeChart createXYAreaChart(String title,String xAxisLabel,
+    public static JFreeChart createXYAreaChart(String title,String xAxisLabel,
             String yAxisLabel, XYDataset dataset) {
 
         NumberAxis xAxis = new NumberAxis(xAxisLabel);
@@ -1111,7 +1111,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a stacked XY area plot.  The chart object returned by this
@@ -1126,7 +1126,7 @@ public abstract class ChartFactory {
      *
      * @return A stacked XY area chart.
      */
-    /*public static JFreeChart createStackedXYAreaChart(String title,
+    public static JFreeChart createStackedXYAreaChart(String title,
             String xAxisLabel, String yAxisLabel, TableXYDataset dataset) {
 
         NumberAxis xAxis = new NumberAxis(xAxisLabel);
@@ -1146,7 +1146,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a line chart (based on an {@link XYDataset}) with default
@@ -1159,7 +1159,7 @@ public abstract class ChartFactory {
      *
      * @return The chart.
      */
-    /*public static JFreeChart createXYLineChart(String title,
+    public static JFreeChart createXYLineChart(String title,
             String xAxisLabel, String yAxisLabel, XYDataset dataset) {
 
         NumberAxis xAxis = new NumberAxis(xAxisLabel);
@@ -1173,7 +1173,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a stepped XY plot with default settings.
@@ -1185,7 +1185,7 @@ public abstract class ChartFactory {
      *
      * @return A chart.
      */
-    /*public static JFreeChart createXYStepChart(String title, String xAxisLabel,
+    public static JFreeChart createXYStepChart(String title, String xAxisLabel,
             String yAxisLabel, XYDataset dataset) {
 
         DateAxis xAxis = new DateAxis(xAxisLabel);
@@ -1203,7 +1203,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a filled stepped XY plot with default settings.
@@ -1215,7 +1215,7 @@ public abstract class ChartFactory {
      *
      * @return A chart.
      */
-    /*public static JFreeChart createXYStepAreaChart(String title,
+    public static JFreeChart createXYStepAreaChart(String title,
             String xAxisLabel, String yAxisLabel, XYDataset dataset) {
 
         NumberAxis xAxis = new NumberAxis(xAxisLabel);
@@ -1234,7 +1234,7 @@ public abstract class ChartFactory {
         JFreeChart chart = new JFreeChart(title, plot);
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates and returns a time series chart.  A time series chart is an
@@ -1254,7 +1254,7 @@ public abstract class ChartFactory {
      *
      * @return A time series chart.
      */
-    /*public static JFreeChart createTimeSeriesChart(String title,
+    public static JFreeChart createTimeSeriesChart(String title,
             String timeAxisLabel, String valueAxisLabel, XYDataset dataset) {
 
         ValueAxis timeAxis = new DateAxis(timeAxisLabel);
@@ -1276,7 +1276,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates and returns a default instance of a candlesticks chart.
@@ -1290,7 +1290,7 @@ public abstract class ChartFactory {
      *
      * @return A candlestick chart.
      */
-    /*public static JFreeChart createCandlestickChart(String title,
+    public static JFreeChart createCandlestickChart(String title,
             String timeAxisLabel, String valueAxisLabel, OHLCDataset dataset) {
         ValueAxis timeAxis = new DateAxis(timeAxisLabel);
         NumberAxis valueAxis = new NumberAxis(valueAxisLabel);
@@ -1299,7 +1299,7 @@ public abstract class ChartFactory {
         JFreeChart chart = new JFreeChart(title, plot);
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates and returns a default instance of a high-low-open-close chart.
@@ -1312,7 +1312,7 @@ public abstract class ChartFactory {
      *
      * @return A high-low-open-close chart.
      */
-    /*public static JFreeChart createHighLowChart(String title,
+    public static JFreeChart createHighLowChart(String title,
             String timeAxisLabel, String valueAxisLabel, OHLCDataset dataset ) {
 
         ValueAxis timeAxis = new DateAxis(timeAxisLabel);
@@ -1324,7 +1324,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates and returns a default instance of a high-low-open-close chart.
@@ -1338,7 +1338,7 @@ public abstract class ChartFactory {
      *
      * @return A high-low-open-close chart.
      */
-    /*public static JFreeChart createHighLowChart(String title,
+    public static JFreeChart createHighLowChart(String title,
            String timeAxisLabel, String valueAxisLabel, OHLCDataset dataset,
            boolean legend) {
 
@@ -1351,7 +1351,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a bubble chart with default settings.  The chart is composed of
@@ -1366,7 +1366,7 @@ public abstract class ChartFactory {
      *
      * @return A bubble chart.
      */
-    /*public static JFreeChart createBubbleChart(String title, String xAxisLabel,
+    public static JFreeChart createBubbleChart(String title, String xAxisLabel,
             String yAxisLabel, XYZDataset dataset) {
 
         NumberAxis xAxis = new NumberAxis(xAxisLabel);
@@ -1384,7 +1384,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a histogram chart.  This chart is constructed with an
@@ -1398,7 +1398,7 @@ public abstract class ChartFactory {
      *
      * @return The chart.
      */
-    /*public static JFreeChart createHistogram(String title,
+    public static JFreeChart createHistogram(String title,
             String xAxisLabel, String yAxisLabel, IntervalXYDataset dataset) {
 
         NumberAxis xAxis = new NumberAxis(xAxisLabel);
@@ -1415,7 +1415,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates and returns a default instance of a box and whisker chart
@@ -1432,7 +1432,7 @@ public abstract class ChartFactory {
      *
      * @since 1.0.4
      */
-    /*public static JFreeChart createBoxAndWhiskerChart(String title,
+    public static JFreeChart createBoxAndWhiskerChart(String title,
             String categoryAxisLabel, String valueAxisLabel,
             BoxAndWhiskerCategoryDataset dataset) {
 
@@ -1448,7 +1448,7 @@ public abstract class ChartFactory {
         JFreeChart chart = new JFreeChart(title, plot);
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
     /**
      * Creates and returns a default instance of a box and whisker chart.
@@ -1462,7 +1462,7 @@ public abstract class ChartFactory {
      *
      * @return A box and whisker chart.
      */
-    /*(public static JFreeChart createBoxAndWhiskerChart(String title,
+    public static JFreeChart createBoxAndWhiskerChart(String title,
             String timeAxisLabel, String valueAxisLabel,
             BoxAndWhiskerXYDataset dataset) {
 
@@ -1475,7 +1475,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a wind plot with default settings.
@@ -1487,7 +1487,7 @@ public abstract class ChartFactory {
      *
      * @return A wind plot.
      */
-    /*public static JFreeChart createWindPlot(String title,
+    public static JFreeChart createWindPlot(String title,
             String xAxisLabel, String yAxisLabel, WindDataset dataset) {
 
         ValueAxis xAxis = new DateAxis(xAxisLabel);
@@ -1501,7 +1501,7 @@ public abstract class ChartFactory {
         currentTheme.apply(chart);
         return chart;
 
-    }*/
+    }
 
     /**
      * Creates a wafer map chart.
@@ -1511,7 +1511,7 @@ public abstract class ChartFactory {
      *
      * @return A wafer map chart.
      */
-    /*public static JFreeChart createWaferMapChart(String title,
+    public static JFreeChart createWaferMapChart(String title,
             WaferMapDataset dataset) {
 
         WaferMapPlot plot = new WaferMapPlot(dataset);
@@ -1521,6 +1521,6 @@ public abstract class ChartFactory {
         JFreeChart chart = new JFreeChart(title, plot);
         currentTheme.apply(chart);
         return chart;
-    }*/
+    }
 
 }
